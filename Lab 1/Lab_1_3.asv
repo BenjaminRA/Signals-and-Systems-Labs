@@ -1,0 +1,28 @@
+[y, sr] = audioread('C:\Users\depre\Desktop\muestrasguitarra\muestras_guitarra\acoustic.wav');
+
+dt = 1/sr;
+t = 0:dt:(length(y)*dt)-dt;
+
+
+
+compression = 10000;
+
+final = zeros(1, length(y)-compression);
+
+counter = 1;
+
+for i = 1:length(y)
+    if i == floor(length(y)*counter/compression)
+        counter = counter + 1;
+    else
+        final(i - (counter-1)) = y(i);
+    end
+end
+
+sound(final, sr);
+x = 0:dt:(length(y)*dt)-dt;
+hold on;
+plot(x, y);
+plot(x, [final zeros(1, length(y)-length(final))]);
+hold off;
+grid;
