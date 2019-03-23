@@ -1,4 +1,4 @@
-[y, sr] = audioread('EDITAR');
+[y, sr] = audioread('C:\Users\depre\Desktop\muestrasguitarra\muestras_guitarra\acoustic.wav');
 
 % La duración de cada muestra
 dt = 1/sr;
@@ -7,7 +7,7 @@ dt = 1/sr;
 % para mostrar todas las muestras
 t = 0:dt:(length(y)*dt)-dt;
 
-times = 10;
+times = 1;
 
 % Creo un vector de 0 con el largo correspodiente al nuevo muestreo
 final = zeros(1, length(y)*(times+1));

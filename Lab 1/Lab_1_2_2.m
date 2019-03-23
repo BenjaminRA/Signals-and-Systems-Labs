@@ -1,4 +1,4 @@
-[y, sr] = audioread('EDITAR');
+[y, sr] = audioread('C:\Users\depre\Desktop\muestrasguitarra\muestras_guitarra\acoustic.wav');
 
 % La duración de cada muestra
 dt = 1/sr;
@@ -24,7 +24,7 @@ end
 % sound(final, sr);
 x = 0:dt:(length(final)*dt)-dt;
 hold on;
-% plot(x, [y' zeros(1, length(final)-length(y))]);
+plot(x, [y' zeros(1, length(final)-length(y))]);
 plot(x, final);
 hold off;
 grid;
