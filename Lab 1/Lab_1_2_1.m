@@ -1,4 +1,4 @@
-[y, sr] = audioread('C:\Users\depre\Desktop\muestrasguitarra\muestras_guitarra\acoustic.wav');
+[y, sr] = audioread('EDITAR');
 
 % La duración de cada muestra
 dt = 1/sr;
