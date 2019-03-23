@@ -14,7 +14,8 @@ delay_sec = 1;
 delay = (cat(2, zeros(1, floor(sr*delay_sec)), y'))';
 t_delay = 0:dt:(length(delay)*dt)-dt;
 
-fade = 1:-1/length(y):0;
+fade = 1:-1/(sr*1):0;
+fade = [fade zeros(1, length(y)-(sr*1))];
 for i = 1:length(y)
     delay(i + floor(sr*delay_sec)) = delay(i + floor(sr*delay_sec))*fade(i);
 end
