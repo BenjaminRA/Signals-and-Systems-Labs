@@ -7,8 +7,10 @@ dt = 1/sr;
 % para mostrar todas las muestras
 t = 0:dt:(length(y)*dt)-dt;
 
+
 delay_sec = 1;
 cantidad = 1;
+
 
 % Concatenar el vector de 0 al principio con la señal original para crear el
 % Efecto de Eco
@@ -24,7 +26,7 @@ final = cat(2, y', zeros(1, floor(sr*delay_sec))) + delay'.*cantidad;
 % sound(final, sr);
 x = 0:dt:(length(final)*dt)-dt;
 hold on;
-plot(x, delay);
+plot(x, final);
 % plot(x, cat(2, y', zeros(1, floor(sr*delay_sec))));
 hold off;
 grid;
