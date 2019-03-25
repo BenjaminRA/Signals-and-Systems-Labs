@@ -7,28 +7,36 @@ dt = 1/sr;
 % para mostrar todas las muestras
 t = 0:dt:(length(y)*dt)-dt;
 
+% Vector con la cantidad de retardo correspondiente a cada eco
+delay_sec = [0.0001 0.0002 0.0003];
 
-delay_sec = 1;
-cantidad = 1;
-
-
-% Concatenar el vector de 0 al principio con la señal original para crear el
-% Efecto de Eco
-delay = (cat(2, zeros(1, floor(sr*delay_sec)), y'))';
-t_delay = 0:dt:(length(delay)*dt)-dt;
-
-fade = 1:-1/length(y):0;
-for i = 1:length(y)
-    delay(i + floor(sr*delay_sec)) = delay(i + floor(sr*delay_sec))*fade(i);
+max = 0;
+for i = 1:length(delay_sec)
+    if max < delay_sec(i)
+        max = delay_sec(i);
+    end
 end
 
-final = cat(2, y', zeros(1, floor(sr*delay_sec))) + delay'.*cantidad;
-% sound(final, sr);
-x = 0:dt:(length(final)*dt)-dt;
+t_total = 0:dt:((length(y)+floor(sr*max))*dt)-dt;
+final = cat(2, y', zeros(1, floor(sr*max)));
 hold on;
-plot(x, final);
-% plot(x, cat(2, y', zeros(1, floor(sr*delay_sec))));
-hold off;
 grid;
 xlabel('Seconds'); 
 ylabel ('Amplitude');
+plot(t_total, final);
+for i = 1:length(delay_sec)
+    % Concatenar el vector de 0 al principio con la señal original para crear el
+    % Efecto de Eco
+    delay = (cat(2, zeros(1, floor(sr*delay_sec(i))), y'));
+    delay = cat(2, delay, zeros(1, (length(y)+floor(sr*max))-length(delay)));
+    fade = (cat(2, zeros(1, floor(sr*delay_sec(i))), 1:-1/length(y):0));
+    fade = cat(2, fade, zeros(1, (length(y)+floor(sr*max))-length(fade)));
+    for j = 1:length(delay)
+       delay(j) = delay(j)*fade(j);
+       final(j) = final(j)+delay(j);
+    end
+    plot(t_total, delay);
+end
+plot(t_total, final);
+hold off;
+sound(final, sr)
