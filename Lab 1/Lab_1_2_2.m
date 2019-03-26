@@ -7,7 +7,7 @@ dt = 1/sr;
 % para mostrar todas las muestras
 t = 0:dt:(length(y)*dt)-dt;
 
-times = 10;
+times = 1;
 
 % Creo un vector de 0 con el largo correspodiente al nuevo muestreo
 final = zeros(1, length(y)*(times+1));
@@ -21,7 +21,7 @@ for i = (times+1):(times+1):length(final)
     end
 end
 
-% sound(final, sr);
+sound(final, sr);
 x = 0:dt:(length(final)*dt)-dt;
 hold on;
 plot(x, [y' zeros(1, length(final)-length(y))]);

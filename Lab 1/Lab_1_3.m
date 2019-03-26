@@ -7,7 +7,7 @@ dt = 1/sr;
 % para mostrar todas las muestras
 t = 0:dt:(length(y)*dt)-dt;
 
-compression = 80000;
+compression = 5000;
 
 % Creo un vector de 0 con el largo correspodiente al nuevo muestreo
 final = zeros(1, length(y)-compression);
@@ -26,7 +26,8 @@ for i = 1:length(y)
     end
 end
 
-sound(final, (sr*length(final)/length(y))); % para que se escuche a la misma velocidad
+% sound(y, sr)
+% sound(final, (sr*length(final)/length(y))); % para que se escuche a la misma velocidad
 x = 0:dt:(length(y)*dt)-dt;
 hold on;
 plot(x, y);
