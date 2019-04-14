@@ -21,8 +21,8 @@ def stair_m():
     return u(t - 0)
 
 def sine_m():
-    senoidal_points = np.arange(100)
-    return np.sin(10 * np.pi * senoidal_points / 100) / (10 * np.pi * senoidal_points / 100)
+    senoidal_points = np.linspace(0, 1, 500)
+    return np.sin(10 * np.pi * senoidal_points) / 10 * np.pi * senoidal_points
 
 def square():
     square_points = np.linspace(0, 1, 500, endpoint=False)
@@ -38,9 +38,9 @@ def triangle():
 
 def convolve(original, filter_impulse):
 
-    filtered = signal.convolve(original, filter_impulse, mode="full", method="direct")
+    filtered = signal.convolve(original, filter_impulse, mode="full")
 
-    fig, (ax_orig, ax_win, ax_filt) = plt.subplots(3, 1, sharex=True)
+    fig, (ax_orig, ax_win, ax_filt) = plt.subplots(3, 1, sharex=False)
     
     ax_orig.plot(original)
     ax_orig.set_title("Original pulse")
@@ -59,8 +59,8 @@ def convolve(original, filter_impulse):
 
 if __name__ == "__main__":
     convolve(
-        impulse_m(),
-        senoidal()
+        np.repeat([0., 1., 0.], 200),
+        sine_m()
     )
     # convolve(
     #     np.repeat([0., 1., 0.], 200),
