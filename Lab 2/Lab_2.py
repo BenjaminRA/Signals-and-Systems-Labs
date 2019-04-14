@@ -15,10 +15,10 @@ def exponential_m(type=False):
 def impulse_m():
     return signal.unit_impulse(20, "mid")
 
-def stair_m():
+def stair_m(offset = 0):
     u = lambda t: np.piecewise(t, t >= 0, [1,0])
     t = np.arange(-10, 10, 0.1)
-    return u(t - 0)
+    return u(t - offset)
 
 def sine_m():
     senoidal_points = np.linspace(0, 1, 500)
@@ -59,7 +59,7 @@ def convolve(original, filter_impulse):
 
 if __name__ == "__main__":
     convolve(
-        np.repeat([0., 1., 0.], 200),
+        stair_m(5),
         sine_m()
     )
     # convolve(
