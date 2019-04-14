@@ -13,7 +13,7 @@ def exponential_m(type=False):
     return signal.exponential(M, 0, tau2, False)
 
 def impulse_m():
-    return signal.unit_impulse(20, 'mid')
+    return signal.unit_impulse(20, "mid")
 
 def stair_m():
     u = lambda t: np.piecewise(t, t >= 0, [1,0])
@@ -43,21 +43,21 @@ def convolve(original, filter_impulse):
     fig, (ax_orig, ax_win, ax_filt) = plt.subplots(3, 1, sharex=True)
     
     ax_orig.plot(original)
-    ax_orig.set_title('Original pulse')
+    ax_orig.set_title("Original pulse")
     ax_orig.margins(0, 0.1)
 
     ax_win.plot(filter_impulse)
-    ax_win.set_title('Filter impulse response')
+    ax_win.set_title("Filter impulse response")
     ax_win.margins(0, 0.1)
 
     ax_filt.plot(filtered)
-    ax_filt.set_title('Filtered signal')
+    ax_filt.set_title("Filtered signal")
     ax_filt.margins(0, 0.1)
     
     fig.tight_layout()
     plt.show()
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     convolve(
         impulse_m(),
         senoidal()
