@@ -19,7 +19,7 @@ def exponential_m(decay=False):
     """
     
     M = 50
-    sign = -1 if type else 1
+    sign = -1 if decay else 1
     tau2 = sign*(M) / np.log(0.1)
     return signal.exponential(M, 0, tau2, False)
 
@@ -126,7 +126,7 @@ def convolve(original, filter_impulse, factor = 1, offset = 0, side_by_side = Fa
         modified = signal.convolve(original, filter_impulse, mode="full")
 
         ax_col[1].plot(modified)
-        ax_col[1].set_title(f"Convolución con Factor {factor} y Corrimento {offset}s")
+        ax_col[1].set_title(f"Convolución con Factor {factor}\ny Corrimento {offset}s")
         ax_col[1].grid(True)
         ax_col[1].set_xlabel('Tiempo (t)')
         ax_col[1].set_ylabel('Valor')
@@ -171,8 +171,8 @@ def convolve(original, filter_impulse, factor = 1, offset = 0, side_by_side = Fa
 if __name__ == "__main__":
     convolve(
         original = triangle(), 
-        filter_impulse = stair_m(), 
-        factor = 1.5, 
-        offset = 500,
+        filter_impulse = exponential_m(), 
+        factor = 0.7, 
+        offset = 100,
         side_by_side = True
     )
