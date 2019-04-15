@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 # Pongo el valor en el pivote que es el 0 (donde reflejé la función)
 
 def exponential_m(decay=False):
-    """
+	"""
 	Returns an exponential function.
 
 	Parameters
@@ -16,54 +16,59 @@ def exponential_m(decay=False):
 	decay: bool
 		If True returns a decaying exponential function
 		If False returns a growing exponential function
-
     """
-    M = 50
-    sign = -1 if type else 1
-    tau2 = sign*(M) / np.log(0.1)
-    return signal.exponential(M, 0, tau2, False)
+	
+	M = 50
+	sign = -1 if type else 1
+	tau2 = sign*(M) / np.log(0.1)
+	return signal.exponential(M, 0, tau2, False)
 
 def impulse_m():
 	"""
 	Returns a single impulse signal.
 	"""
-    return signal.unit_impulse(3, "mid")
+	
+	return signal.unit_impulse(3, "mid")
 
 def stair_m():
 	"""
 	Returns the stair function with origin at zero.
 	"""
-    u = lambda t: np.piecewise(t, t >= 0, [1,0])
-    t = np.arange(-10, 10, 1)
-    return u(t)
+	
+	u = lambda t: np.piecewise(t, t >= 0, [1,0])
+	t = np.arange(-10, 10, 1)
+	return u(t)
 
 def sine_m():
 	"""
 	Returns an aperiodic sinusoidal function.
 	"""
-    senoidal_points = np.linspace(0, 1, 500)
-    return np.sin(10 * np.pi * senoidal_points) / 10 * np.pi * senoidal_points
+	
+	senoidal_points = np.linspace(0, 1, 500)
+	return np.sin(10 * np.pi * senoidal_points) / 10 * np.pi * senoidal_points
 
 def square():
 	"""
 	Returns a square function.
 	"""
-    square_points = np.linspace(0, 1, 500, endpoint=False)
-    return signal.square(10 * np.pi * square_points)
+	
+	square_points = np.linspace(0, 1, 500, endpoint=False)
+	return signal.square(10 * np.pi * square_points)
 
 def sine():
 	"""
 	Returns a periodic sinusoidal function.
 	"""
-    senoidal_points = np.linspace(0, 1, 500)
-    return np.sin(10 * np.pi * senoidal_points)
+	senoidal_points = np.linspace(0, 1, 500)
+	return np.sin(10 * np.pi * senoidal_points)
 
 def triangle():
 	"""
 	Returns a triangle or sawtooth function.
 	"""
-    triangle_points = np.linspace(0, 1, 500)
-    return signal.sawtooth(10 * np.pi * triangle_points, 0.5)
+	
+	triangle_points = np.linspace(0, 1, 500)
+	return signal.sawtooth(10 * np.pi * triangle_points, 0.5)
 
 def convolve(original, filter_impulse, multiplier = 1, offset = 0):
     """
