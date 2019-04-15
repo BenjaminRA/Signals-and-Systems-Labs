@@ -8,14 +8,14 @@ import matplotlib.pyplot as plt
 # Pongo el valor en el pivote que es el 0 (donde reflejé la función)
 
 def exponential_m(decay=False):
-	"""
-	Returns an exponential function.
+    """
+    Returns an exponential function.
 
-	Parameters
-	----------
-	decay: bool
-		If True returns a decaying exponential function
-		If False returns a growing exponential function
+    Parameters
+    ----------
+    decay: bool
+        If True returns a decaying exponential function
+        If False returns a growing exponential function
     """
 	
 	M = 50
