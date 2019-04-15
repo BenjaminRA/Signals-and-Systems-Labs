@@ -86,6 +86,12 @@ def convolve(original, filter_impulse, factor = 1, offset = 0, side_by_side = Fa
             Multiplies the filter impulse response by this factor.
     offset: int
             contatenates this amount of 0 before de filter impulse response
+    side_by_side:
+            Plots 4 graphs only when factor en offset are not null.
+                Top-Left: Original Signal.
+                Top-Right: Filter Impulse Response Signal.
+                Bottom-Left: Original Convolution.
+                Bottom-Right: Convolution with modified Filter Impulse Response signal.
     """
 
     if side_by_side and (not factor == 1 or not offset == 0) :
