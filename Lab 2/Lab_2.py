@@ -38,28 +38,24 @@ def triangle():
 
 def convolve(original, filter_impulse, multiplier = 1, offset = 0):
 
-    print(len(filter_impulse))
-
     filter_impulse = [*np.linspace(0, 0, offset), *filter_impulse]
 
     filter_impulse = np.asarray(filter_impulse) * multiplier
-
-    print(len(filter_impulse))
 
     filtered = signal.convolve(original, filter_impulse, mode="full")
 
     fig, (ax_orig, ax_win, ax_filt) = plt.subplots(3, 1, sharex=False)
     
     ax_orig.plot(original)
-    ax_orig.set_title("Original pulse")
+    ax_orig.set_title("Entrada")
     ax_orig.margins(0, 0.1)
 
     ax_win.plot(filter_impulse)
-    ax_win.set_title("Filter impulse response")
+    ax_win.set_title("Función de Transferencia")
     ax_win.margins(0, 0.1)
 
     ax_filt.plot(filtered)
-    ax_filt.set_title("Filtered signal")
+    ax_filt.set_title("Salida")
     ax_filt.margins(0, 0.1)
     
     fig.tight_layout()
