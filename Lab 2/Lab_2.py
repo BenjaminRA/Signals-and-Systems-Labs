@@ -13,12 +13,12 @@ def exponential_m(type=False):
     return signal.exponential(M, 0, tau2, False)
 
 def impulse_m():
-    return signal.unit_impulse(20, "mid")
+    return signal.unit_impulse(50, "mid")
 
-def stair_m(offset = 0):
+def stair_m():
     u = lambda t: np.piecewise(t, t >= 0, [1,0])
     t = np.arange(-10, 10, 0.1)
-    return u(t - offset)
+    return u(t)
 
 def sine_m():
     senoidal_points = np.linspace(0, 1, 500)
@@ -36,7 +36,15 @@ def triangle():
     triangle_points = np.linspace(0, 1, 500)
     return signal.sawtooth(10 * np.pi * triangle_points, 0.5)
 
-def convolve(original, filter_impulse):
+def convolve(original, filter_impulse, multiplier = 1, offset = 0):
+
+    print(len(filter_impulse))
+
+    filter_impulse = [*np.linspace(0, 0, offset), *filter_impulse]
+
+    filter_impulse = np.asarray(filter_impulse) * multiplier
+
+    print(len(filter_impulse))
 
     filtered = signal.convolve(original, filter_impulse, mode="full")
 
@@ -59,8 +67,10 @@ def convolve(original, filter_impulse):
 
 if __name__ == "__main__":
     convolve(
-        stair_m(5),
-        sine_m()
+        original = np.repeat([0., 1., 0.], 200),
+        filter_impulse = senoidal(),
+        multiplier = 1,
+        offset = 0
     )
     # convolve(
     #     np.repeat([0., 1., 0.], 200),
