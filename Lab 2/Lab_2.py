@@ -170,9 +170,9 @@ def convolve(original, filter_impulse, factor = 1, offset = 0, side_by_side = Fa
 
 if __name__ == "__main__":
     convolve(
-        original = triangle(), 
-        filter_impulse = exponential_m(), 
-        factor = 0.7, 
-        offset = 100,
+        original = square(),
+        filter_impulse = stair_m(),
+        factor = 0.5,
+        offset = 85,
         side_by_side = True
     )
