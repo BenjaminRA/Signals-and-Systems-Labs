@@ -2,11 +2,6 @@ import numpy as np
 from scipy import signal
 import matplotlib.pyplot as plt
 
-# Todas las funciones que tienen un "_m" en su nombre, son las funciones aperiodicas, o el objetivo es que esas sean xD
-# Y las funciones que están abajo son las que hay que convulsionar.
-# Hay que hacer algunos ajustes menores a cada función, pero la idea está :D
-# Pongo el valor en el pivote que es el 0 (donde reflejé la función)
-
 def exponential_m(decay=False):
     """
     Returns an exponential function.
