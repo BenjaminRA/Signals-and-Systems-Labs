@@ -98,7 +98,7 @@ def convolve(original, filter_impulse, factor = 1, offset = 0, side_by_side = Fa
         ax_row[0].grid(True)
         ax_row[0].set_title("Entrada")
         ax_row[0].set_xlabel('Tiempo (t)')
-        ax_row[0].set_ylabel('Valor')
+        ax_row[0].set_ylabel('Amplitud')
         ax_row[0].margins(0, 0.1)
         ax_row[0].plot(original)
 
@@ -106,14 +106,14 @@ def convolve(original, filter_impulse, factor = 1, offset = 0, side_by_side = Fa
         ax_row[1].grid(True)
         ax_row[1].set_title("Función de Transferencia")
         ax_row[1].set_xlabel('Tiempo (t)')
-        ax_row[1].set_ylabel('Valor')
+        ax_row[1].set_ylabel('Amplitud')
         ax_row[1].margins(0, 0.1)
 
         ax_col[0].plot(filtered)
         ax_col[0].set_title("Convolución Original")
         ax_col[0].grid(True)
         ax_col[0].set_xlabel('Tiempo (t)')
-        ax_col[0].set_ylabel('Valor')
+        ax_col[0].set_ylabel('Amplitud')
         ax_col[0].margins(0, 0.1)
 
         filter_impulse = [*np.linspace(0, 0, offset), *filter_impulse]
@@ -124,7 +124,7 @@ def convolve(original, filter_impulse, factor = 1, offset = 0, side_by_side = Fa
         ax_col[1].set_title(f"Convolución con Factor {factor}\ny Corrimento {offset}s")
         ax_col[1].grid(True)
         ax_col[1].set_xlabel('Tiempo (t)')
-        ax_col[1].set_ylabel('Valor')
+        ax_col[1].set_ylabel('Amplitud')
         ax_col[1].margins(0, 0.1)
         
         fig.tight_layout()
@@ -143,21 +143,21 @@ def convolve(original, filter_impulse, factor = 1, offset = 0, side_by_side = Fa
         ax_orig.grid(True)
         ax_orig.set_title("Entrada")
         ax_orig.set_xlabel('Tiempo (t)')
-        ax_orig.set_ylabel('Valor')
+        ax_orig.set_ylabel('Amplitud')
         ax_orig.margins(0, 0.1)
 
         ax_win.plot(filter_impulse)
         ax_win.set_title("Función de Transferencia")
         ax_win.grid(True)
         ax_win.set_xlabel('Tiempo (t)')
-        ax_win.set_ylabel('Valor')
+        ax_win.set_ylabel('Amplitud')
         ax_win.margins(0, 0.1)
 
         ax_filt.plot(filtered)
         ax_filt.grid(True)
         ax_filt.set_title("Salida")
         ax_filt.set_xlabel('Tiempo (t)')
-        ax_filt.set_ylabel('Valor')
+        ax_filt.set_ylabel('Amplitud')
         ax_filt.margins(0, 0.1)
         
         fig.tight_layout()
